@@ -54,6 +54,26 @@ namespace ops {
  *
  * Sin(x) : sin(x)
  *
+ * ## Cos
+ *
+ * Cos(x) : cos(x)
+ *
+ * ## Tan
+ *
+ * Tan(x) : tan(x)
+ *
+ * ## ATan
+ *
+ * ATan(x) : arctan(x)
+ *
+ * ## ACosh
+ *
+ * ACosh(x) : arccosh(x)
+ *
+ * ## ATanh
+ *
+ * Tan(x) : arctanh(x)
+ *
  * ## Exp
  *
  * Exp(x) : e^x
@@ -99,8 +119,6 @@ DECLARE_SIMPLE_OP(DataConvert)
 DECLARE_SIMPLE_OP(Neg)
 DECLARE_SIMPLE_OP(Abs)
 DECLARE_SIMPLE_OP(Sin)
-DECLARE_SIMPLE_OP(Cos)
-DECLARE_SIMPLE_OP(Tan)
 DECLARE_SIMPLE_OP(Exp)
 DECLARE_SIMPLE_OP(Log)
 DECLARE_SIMPLE_OP(Sqrt)
@@ -112,6 +130,26 @@ DECLARE_SIMPLE_OP(Ceil)
 DECLARE_SIMPLE_OP(Round)
 DECLARE_SIMPLE_OP(Cast)
 DECLARE_SIMPLE_OP(Rcp)
+
+#ifdef VSI_FEAT_OP_COS
+DECLARE_SIMPLE_OP(Cos)
+#endif
+
+#ifdef VSI_FEAT_OP_TAN
+DECLARE_SIMPLE_OP(Tan)
+#endif
+
+#ifdef VSI_FEAT_OP_ATAN
+DECLARE_SIMPLE_OP(ATan)
+#endif
+
+#ifdef VSI_FEAT_OP_ATANH
+DECLARE_SIMPLE_OP(ATanh)
+#endif
+
+#ifdef VSI_FEAT_OP_ACOSH
+DECLARE_SIMPLE_OP(ACosh)
+#endif
 
 #undef DECLARE_SIMPLE_OP
 

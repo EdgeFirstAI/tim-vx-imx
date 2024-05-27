@@ -1,6 +1,6 @@
 /****************************************************************************
 *
-*    Copyright (c) 2020-2023 Vivante Corporation
+*    Copyright (c) 2020 Vivante Corporation
 *
 *    Permission is hereby granted, free of charge, to any person obtaining a
 *    copy of this software and associated documentation files (the "Software"),
@@ -21,43 +21,34 @@
 *    DEALINGS IN THE SOFTWARE.
 *
 *****************************************************************************/
-#ifndef TIM_VX_OPS_SCATTERND_ONNX_V16_H_
-#define TIM_VX_OPS_SCATTERND_ONNX_V16_H_
-#include "tim/vx/builtin_op.h"
 
-#ifdef VSI_FEAT_OP_SCATTER_ND_UPDATE
+#ifndef _VSI_NN_OP_RMSNORM_H
+#define _VSI_NN_OP_RMSNORM_H
 
-namespace tim {
-namespace vx {
-namespace ops {
+#include "vsi_nn_types.h"
 
-/**
- * ## ScatterND_ONNX_V16
- *
- * Scatter updates into a new tensor according to indices.
- *
- * - reduction: Type of reduction to apply: none (default), add, mul, max, min.
- */
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-class ScatterND_ONNX_V16 : public BuiltinOp {
- public:
-  enum ReductionType {
-    REDUCTION_NONE,
-    REDUCTION_ADD,
-    REDUCTION_MUL,
-    REDUCTION_MAX,
-    REDUCTION_MIN
-  };
-  ScatterND_ONNX_V16(Graph* graph, ReductionType reduction = ReductionType::REDUCTION_NONE);
 
-  std::shared_ptr<Operation> Clone(std::shared_ptr<Graph>& graph) const override;
- protected:
-  ReductionType reduction_;
-};
+typedef struct _rmsnorm_local_data_t {
+    int32_t placeholder;
+} rmsnorm_local_data_t;
 
-}  // namespace ops
-}  // namespace vx
-}  // namespace tim
+typedef struct _vsi_nn_rmsnorm_param
+{
+    struct _rmsnorm_local_data_t* local;
+    float eps;
+    int32_t axis;
+} vsi_nn_rmsnorm_param;
+
+_compiler_assert(offsetof(vsi_nn_rmsnorm_param, local) == 0, \
+    vsi_nn_rmsnorm_h );
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
-#endif /* TIM_VX_OPS_SCATTERND_ONNX_V16_H_ */
+
