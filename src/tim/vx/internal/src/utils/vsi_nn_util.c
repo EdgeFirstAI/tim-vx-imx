@@ -35,9 +35,6 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#if defined(__ANDROID__)
-    #include <sys/system_properties.h>
-#endif
 #endif
 
 #include "vsi_nn_prv.h"
