@@ -12,6 +12,12 @@ else()
     set(VIV_SDK_DRIVER_PREFIX "drivers")
 endif()
 
+if(${ANDROID_ABI} STREQUAL "arm64-v8a")
+    set(VIV_SDK_DRIVER_PREFIX "gpu-viv/lib64")
+elseif(${ANDROID_ABI} STREQUAL "armeabi-v7a")
+    set(VIV_SDK_DRIVER_PREFIX "gpu-viv/lib")
+endif()
+
 message("using driver libs from ${EXTERNAL_VIV_SDK}/${VIV_SDK_DRIVER_PREFIX}")
 
 set(OVXDRV_LIBRARIES)
