@@ -4,6 +4,7 @@
 # Prerequesite: Requires Vivante SDK (libOpenVX etc) to be available
 #               and VIVANTE_SDK_INC to be set for include paths
 #
+ifeq ($(BUILD_TIMVX_FROM_SRC),true)
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
@@ -82,3 +83,5 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT_SBIN)
 LOCAL_MODULE_CASS := EXECUTABLES
 include $(BUILD_EXECUTABLE)
+
+endif
