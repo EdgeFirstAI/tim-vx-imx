@@ -143,6 +143,7 @@ string(REGEX REPLACE "\\)" " " custom_op_as_flags ${custom_op_list_tmp})
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${op_as_flags} ${custom_op_as_flags}")
 
 add_library(${TARGET_NAME} ${${TARGET_NAME}_SRCS})
+target_link_options(${TARGET_NAME} PRIVATE "-Wl,-z,max-page-size=16384")
 target_include_directories(${TARGET_NAME} PRIVATE ${LITE_INC_DIRS})
 target_link_libraries(${TARGET_NAME} PUBLIC
     -Wl,--no-whole-archive  ${OVXDRV_LIBRARIES} ${LITE_EXTERNAL_LIBS})
