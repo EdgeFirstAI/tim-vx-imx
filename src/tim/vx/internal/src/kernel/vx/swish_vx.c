@@ -23,7 +23,6 @@
 *****************************************************************************/
 
 #include "vsi_nn_types.h"
-#include "vsi_nn_types_prv.h"
 #include "vsi_nn_tensor.h"
 #include "vsi_nn_node.h"
 #include "vsi_nn_log.h"
@@ -67,7 +66,7 @@ REGISTER_SWISH_OPENVX_KERNEL( swish )
     VSI_UNREFERENCED(output_num);
     VSI_UNREFERENCED(input_num);
 
-    if (VSI_NN_HW_EVIS_2 == ((vsi_nn_graph_prv_t*)graph)->options->config.evis.ver)
+    if (VSI_NN_HW_EVIS_2 == graph->ctx->config.evis.ver)
     {
         swish_type = (vsi_nn_swish_type)vsi_nn_kernel_param_get_int32(params, "type");
 

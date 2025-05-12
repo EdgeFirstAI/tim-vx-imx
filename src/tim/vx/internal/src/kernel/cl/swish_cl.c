@@ -27,7 +27,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "vsi_nn_types.h"
-#include "vsi_nn_types_prv.h"
 #include "vsi_nn_tensor.h"
 #include "vsi_nn_graph.h"
 #include "vsi_nn_log.h"
@@ -300,7 +299,7 @@ static vsi_nn_kernel_node_t _setup
     VSI_UNREFERENCED(output_num);
 
 #if (VX_ACTIVATION_EXT_SUPPORT)
-    if (VSI_NN_HW_EVIS_2 == ((vsi_nn_graph_prv_t*)graph)->options->config.evis.ver)
+    if (VSI_NN_HW_EVIS_2 == graph->ctx->config.evis.ver)
     {
         return NULL;
     }

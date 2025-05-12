@@ -25,7 +25,6 @@
 #include <stdlib.h>
 
 #include "vsi_nn_types.h"
-#include "vsi_nn_types_prv.h"
 #include "vsi_nn_platform.h"
 #include "vsi_nn_log.h"
 #include "vsi_nn_graph.h"
@@ -140,7 +139,7 @@ static vsi_bool op_setup
 
     p->is_cifg = inputs[LSTMUNIT_ACT_INPUT_FC_I] == NULL;
     p->is_projection = outputs[LSTMUNIT_ACT_HSTATE_OUT] == NULL;
-    if (((vsi_nn_graph_prv_t*)(self->graph))->options->config.support_stream_processor)
+    if (self->graph->ctx->config.support_stream_processor)
     {
         p->is_layer_norm = inputs[LSTMUNIT_ACT_HSTATE_FC_F] == NULL;
     }

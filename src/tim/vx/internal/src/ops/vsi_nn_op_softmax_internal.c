@@ -25,7 +25,6 @@
 #include <stdlib.h>
 
 #include "vsi_nn_types.h"
-#include "vsi_nn_types_prv.h"
 #include "vsi_nn_platform.h"
 #include "vsi_nn_graph.h"
 #include "vsi_nn_node.h"
@@ -189,7 +188,7 @@ static vsi_status op_optimize
     }
     if ( _need_split_softmax(self, inputs) == FALSE ||
          self->nn_param.softmax_internal.axis != 0 ||
-         ((vsi_nn_graph_prv_t*)(self->graph))->options->config.support_stream_processor )
+         self->graph->ctx->config.support_stream_processor )
     {
         return status;
     }

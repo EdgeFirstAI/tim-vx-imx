@@ -108,11 +108,6 @@ typedef struct _vsi_nn_tensor_prv
     /** create tensor from axisram.*/
     int8_t is_from_axisram;
 
-    /** 2:4 sparsity attr. */
-#if defined(VSI_TENSOR_SPARSITY_SUPPORT)
-    vx_tensor_sparsity_param_e sparsity_type; /*!< \brief sparsity type for the tensor */
-#endif
-
     // Add tensor internal attribute here...
 } vsi_nn_tensor_prv_t;
 

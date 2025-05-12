@@ -34,7 +34,6 @@ typedef struct _vsi_nn_topk_param
 {
     uint32_t     k;
     int32_t      axis;
-    struct _topk_local_data_t* local;
 } vsi_nn_topk_param;
 
 #ifdef __cplusplus

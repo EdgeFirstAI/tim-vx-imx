@@ -26,7 +26,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "vsi_nn_types.h"
-#include "vsi_nn_types_prv.h"
 #include "vsi_nn_tensor.h"
 #include "vsi_nn_graph.h"
 #include "vsi_nn_log.h"
@@ -645,8 +644,7 @@ static vsi_nn_kernel_node_t _setup
 
 #if VX_HARDWARE_CAPS_PARAMS_EXT_SUPPORT
             shader_cnt_support =
-                (((vsi_nn_graph_prv_t*)graph)->options->config.subGroupSize >= 64 &&
-                    ((vsi_nn_graph_prv_t*)graph)->options->config.use_40bits_va) ? TRUE : FALSE;
+                (graph->ctx->config.subGroupSize >= 64 && graph->ctx->config.use_40bits_va) ? TRUE : FALSE;
 #endif
             if ((in1_h % 64 == 0) && (transFlg == 1) && (out_h % 8 == 0) && shader_cnt_support)
             {
