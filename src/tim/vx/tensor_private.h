@@ -68,6 +68,10 @@ class TensorImpl : public Tensor {
   float* ConvertTensorToFloat32Data() override;
   void SetScalar(int8_t is_scalar) override;
 
+  // DMA-BUF support for zero-copy I/O
+  bool HasDmaBuf() const override { return fd_ != -1; }
+  int64_t GetDmaBufFd() const override { return fd_; }
+
   GraphImpl* graph_;
   vsi_nn_tensor_id_t id_;
   TensorSpec spec_;
@@ -133,6 +137,11 @@ class TensorPlaceholder : public Tensor {
   float* ConvertTensorToFloat32Data() override { return nullptr; }
 
   void SetScalar(int8_t is_scalar) override { (void) is_scalar; return; }
+
+  // DMA-BUF support - placeholders don't have dmabufs
+  bool HasDmaBuf() const override { return false; }
+  int64_t GetDmaBufFd() const override { return -1; }
+
   vsi_nn_tensor_id_t id_;
   TensorSpec spec_;
 };
