@@ -166,6 +166,12 @@ class Tensor {
   virtual void SetScalar(int8_t is_scalar) = 0;
   virtual void* ConvertTensorToData(uint8_t* tensorData) = 0;
   virtual float* ConvertTensorToFloat32Data() = 0;
+
+  // DMA-BUF support for zero-copy I/O
+  // Returns true if this tensor was created with a DMA-BUF file descriptor
+  virtual bool HasDmaBuf() const = 0;
+  // Returns the DMA-BUF file descriptor, or -1 if not a dmabuf tensor
+  virtual int64_t GetDmaBufFd() const = 0;
 };
 namespace utils {
 bool Float32ToDtype(std::shared_ptr<tim::vx::Tensor> tensor,

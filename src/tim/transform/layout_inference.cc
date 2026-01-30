@@ -356,7 +356,17 @@ LayoutInference(
   std::queue<std::shared_ptr<vx::Tensor>> tensor_queue;
   auto graph_inputs = src_graph->InputsTensor();
   for (const auto& t_src : graph_inputs) {
-    auto input = infer_graph->CreateTensor(t_src->GetSpec());
+    std::shared_ptr<vx::Tensor> input;
+#ifdef VX_CREATE_TENSOR_SUPPORT_PHYSICAL
+    if (t_src->HasDmaBuf()) {
+      vx::DmaBufferDesc dma_desc;
+      dma_desc.fd = t_src->GetDmaBufFd();
+      input = infer_graph->CreateTensor(t_src->GetSpec(), dma_desc);
+    } else
+#endif
+    {
+      input = infer_graph->CreateTensor(t_src->GetSpec());
+    }
     layout_infer_ctx->UpdateTensorMap(t_src, input);
     layout_infer_ctx->UpdateGraphInputMap(t_src, input);
     tensor_queue.push(t_src);
@@ -382,7 +392,17 @@ LayoutInference(
 
   auto graph_outputs = src_graph->OutputsTensor();
   for (const auto& t_src : graph_outputs) {
-    auto output = infer_graph->CreateTensor(t_src->GetSpec());
+    std::shared_ptr<vx::Tensor> output;
+#ifdef VX_CREATE_TENSOR_SUPPORT_PHYSICAL
+    if (t_src->HasDmaBuf()) {
+      vx::DmaBufferDesc dma_desc;
+      dma_desc.fd = t_src->GetDmaBufFd();
+      output = infer_graph->CreateTensor(t_src->GetSpec(), dma_desc);
+    } else
+#endif
+    {
+      output = infer_graph->CreateTensor(t_src->GetSpec());
+    }
     layout_infer_ctx->UpdateTensorMap(t_src, output);
     layout_infer_ctx->UpdateGraphOutputMap(t_src, output);
     tensor_queue.push(t_src);

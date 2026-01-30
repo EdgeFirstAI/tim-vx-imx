@@ -502,11 +502,17 @@ static vsi_bool _init_tensor
                     ret = FALSE;
                     goto final;
                 }
-                if (!vsi_nn_IsBufferAligned(data, align_start_size))
+#ifdef VX_CREATE_TENSOR_SUPPORT_PHYSICAL
+                // Skip alignment check for DMABUF - the 'data' parameter is an fd, not a pointer
+                if (tensor->attr.vsi_memory_type != VSI_MEMORY_TYPE_DMABUF)
+#endif
                 {
-                    VSILOGE( "vsi_nn_IsBufferAligned is FALSE." );
-                    ret = FALSE;
-                    goto final;
+                    if (!vsi_nn_IsBufferAligned(data, align_start_size))
+                    {
+                        VSILOGE( "vsi_nn_IsBufferAligned is FALSE." );
+                        ret = FALSE;
+                        goto final;
+                    }
                 }
             }
             if( data )
