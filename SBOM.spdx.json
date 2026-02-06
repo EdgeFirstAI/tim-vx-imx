@@ -1,0 +1,109 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.3",
+  "creationInfo": {
+    "created": "2026-01-26T02:22:37Z",
+    "creators": [
+      "Organization: NXP"
+    ],
+    "licenseListVersion": "3.26"
+  },
+  "name": "tim-vx-imx-LF_6.18.2_1.0.0",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://nxp.com/spdx/e778ac84-50cb-4205-9ea6-da5475707f6a",
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-package-e778ac84-50cb-4205-9ea6-da5475707f6a",
+      "name": "tim-vx-imx",
+      "versionInfo": "LF_6.18.2_1.0.0",
+      "licenseConcluded": "(MIT)",
+      "licenseDeclared": "(MIT)",
+      "downloadLocation": "https://github.com/nxp-imx/tim-vx-imx -b lf-6.18.2-1.0.0",
+      "originator": "Organization: NXP",
+      "supplier": "NOASSERTION",
+      "externalRefs": [],
+      "filesAnalyzed": false
+    },
+    {
+      "SPDXID": "SPDXRef-package-08e39a9b-35fc-42c2-b23a-0d91b630346b",
+      "name": "KhronosGroup/OpenVX-Registry",
+      "versionInfo": "1.0",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "downloadLocation": "NOASSERTION",
+      "originator": "Organization: KhronosGroup/OpenVX-Registry",
+      "supplier": "NOASSERTION",
+      "externalRefs": [],
+      "filesAnalyzed": false
+    },
+    {
+      "SPDXID": "SPDXRef-package-d4dfd2f8-f0cf-4dc1-a2c5-6e0a8f0c6faa",
+      "name": "Mesa",
+      "versionInfo": "25.1.6",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "homepage": "https://mesa3d.org/",
+      "downloadLocation": "NOASSERTION",
+      "originator": "Organization: opensuse",
+      "supplier": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "OTHER",
+          "referenceLocator": "df1830bf-68d3-4f81-8e8e-a64a05334df8",
+          "referenceType": "BlackDuck-ComponentOrigin"
+        },
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceLocator": "pkg:rpm/opensuse/Mesa@25.1.6-420.0.2.1.sr20250801?arch=i586",
+          "referenceType": "purl"
+        }
+      ],
+      "filesAnalyzed": false
+    },
+    {
+      "SPDXID": "SPDXRef-package-de0e8fec-878e-4512-ac7b-874079c75bb5",
+      "name": "VeriSilicon/TIM-VX",
+      "versionInfo": "20240729-snapshot-fcdf223d",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "originator": "Organization: verisilicon",
+      "supplier": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "OTHER",
+          "referenceLocator": "19aae3cd-eced-4697-a57f-7768914e4291",
+          "referenceType": "BlackDuck-ComponentOrigin"
+        },
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceLocator": "pkg:github/verisilicon/tim-vx@fcdf223d06b0a70ea564794b19bbe2250a38c10d",
+          "referenceType": "purl"
+        }
+      ],
+      "filesAnalyzed": false
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-package-e778ac84-50cb-4205-9ea6-da5475707f6a"
+    },
+    {
+      "spdxElementId": "SPDXRef-package-e778ac84-50cb-4205-9ea6-da5475707f6a",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-package-08e39a9b-35fc-42c2-b23a-0d91b630346b"
+    },
+    {
+      "spdxElementId": "SPDXRef-package-e778ac84-50cb-4205-9ea6-da5475707f6a",
+      "relationshipType": "DYNAMIC_LINK",
+      "relatedSpdxElement": "SPDXRef-package-d4dfd2f8-f0cf-4dc1-a2c5-6e0a8f0c6faa"
+    },
+    {
+      "spdxElementId": "SPDXRef-package-e778ac84-50cb-4205-9ea6-da5475707f6a",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-package-de0e8fec-878e-4512-ac7b-874079c75bb5"
+    }
+  ]
+}
